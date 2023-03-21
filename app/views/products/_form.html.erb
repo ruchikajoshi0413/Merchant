@@ -1,0 +1,34 @@
+<h1> Merchant Product</h1>
+
+<%= form_with model: @products do |product|%>
+    <div>
+        <%= product.label :category %>
+        <%= product.collection_select :category_id, Category.all, :id, :name %>
+    </div><br/>
+    <div>
+        <%= product.label :name %>
+        <%= product.text_field :name %>
+    </div><br/>
+    <div>
+        <%= product.label :description %>
+        <%= product.text_field :description %>
+    </div><br/>
+    <div>
+        <%= product.label :price %>
+        <%= product.text_field :price %>
+    </div><br/>
+    <div>
+        <%= product.label :status %>
+        <%= product.select :status, Product.statuses.keys %>
+    </div><br/>
+    
+    <div>
+        <%= product.label :user %>
+        <%= product.collection_select :user_id, User.all, :id, :email %>
+    </div>
+
+    <div>
+      <%= product.submit %>
+    </div>
+
+<% end %>

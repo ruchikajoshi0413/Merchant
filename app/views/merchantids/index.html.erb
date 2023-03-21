@@ -1,0 +1,11 @@
+<h1>Merchant Users</h1>
+
+<ul>
+  <% @merchantids.each do |merchant| %>
+      <li>
+        <%= link_to merchant.idname, merchant %>
+      </li>
+  <% end %>
+</ul>
+
+<%= link_to "Merchant User", new_merchantid_path %>

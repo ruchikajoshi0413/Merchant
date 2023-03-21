@@ -1,0 +1,22 @@
+<h1>Our Product</h1>
+
+<p><strong>Name: </strong><%= @product.name %></p>
+<p><strong>Description: </strong><%= @product.description %></p>
+<p><strong>Category ID: </strong><%= @product.category_id %></p>
+<p><strong>Status: </strong><%= @product.status%></p>
+<p><strong>Image: </strong><br/>
+  <% @product.productimage.each do |pimage| %>
+  <%= image_tag pimage.image.url,size:10*10%>
+  <% end %>
+</p>
+<p><strong>Price: </strong><%= @product.price%></p>
+
+<ul>
+  <li><%= link_to "Add", new_product_path(@product) %></li>
+  <li><%= link_to "Edit", edit_product_path(@product) %></li>
+  <li><%= link_to "Destroy", product_path(@product), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+  
+</ul>

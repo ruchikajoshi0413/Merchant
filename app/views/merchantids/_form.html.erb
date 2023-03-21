@@ -1,0 +1,21 @@
+<h1>Merchant User</h1>
+
+<%= form_with model: @merchantids do |merchant|%>
+    <div>
+        <%= merchant.label :idname %>
+        <%= merchant.text_field :idname %>
+    </div><br/>
+    <div>
+        <%= merchant.label :idproof %>
+        <%= merchant.file_field :idproof %>
+    </div><br/>
+    <div>
+        <%= merchant.label :status %>
+        <%= merchant.select :status, Merchantid.statuses.keys %>
+    </div><br/>
+    
+    <div>
+      <%= merchant.submit %>
+    </div>
+
+<% end %>
