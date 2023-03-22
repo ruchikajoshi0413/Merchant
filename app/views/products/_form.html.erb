@@ -22,10 +22,10 @@
         <%= product.select :status, Product.statuses.keys %>
     </div><br/>
     
-    <div>
+    <%# <div>
         <%= product.label :user %>
-        <%= product.collection_select :user_id, User.all, :id, :email %>
-    </div>
+        <%#= product.collection_select :user_id, User.all, :id, :email %>
+    <%# </div> %>
 
     <div>
       <%= product.submit %>

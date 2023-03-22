@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'users/edit'
   devise_for :users
   resources :users
-  resources :products
+  resources :products do
+    resources :productimages
+  end
   resources :merchantids
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

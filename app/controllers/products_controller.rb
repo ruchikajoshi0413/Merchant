@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     def index 
-        @products = Product.all
+        # @products = Product.all
+        @products = Product.where(user_id: current_user.id)
     end
 
     def show 
@@ -12,13 +13,15 @@ class ProductsController < ApplicationController
     end
 
     def create
+      debugger
         @product = Product.new(product_params)
+        @product.user_id = current_user.id
         
         if @product.save
             redirect_to @product
           else
             render :new, status: :unprocessable_entity
-          end 
+        end 
     end
     
     def edit
