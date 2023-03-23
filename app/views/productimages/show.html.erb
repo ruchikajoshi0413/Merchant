@@ -3,8 +3,10 @@
 <%= render @productimage %>
 
 <div>
-  <%= link_to "Edit this productimage", edit_productimage_path(@productimage) %> |
-  <%= link_to "Back to productimages", productimages_path %>
+  <%#= link_to "Add", new_productimage_path(@productimage) %>
+  <%= link_to "Edit this productimage", edit_product_productimage_path %> |
+  <%= link_to "Back to productimages", product_productimages_path %>
 
-  <%= button_to "Destroy this productimage", @productimage, method: :delete %>
+  <%= button_to "Destroy this productimage", @productimage, method: :delete, data: {
+                    turbo_confirm: "Are you sure?"} %>
 </div>

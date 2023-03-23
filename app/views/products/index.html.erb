@@ -1,11 +1,27 @@
-<h1>Merchant Products</h1>
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-<ul>
-  <% @products.each do |product| %>
-      <li>
-        <%= link_to product.name, product %>
-      </li>
-  <% end %>
-</ul>
+  <body>
 
-<%= link_to "New Merchant Product", new_product_path %>
+  <%#= render partial: 'products/merchant' %>
+  <% @products.each_slice(5).each do |pro| %>
+  <%= render 'merchant', merchant: pro %>
+  <% end %> 
+  <hr/>
+
+    <ul>
+      <% @products.each do |product| %>
+          <li>
+            <%= link_to product.name, product %>
+          </li>
+      <% end %>
+    </ul>
+
+    <%= link_to "New Merchant Product", new_product_path %>
+  <body>
+</html>

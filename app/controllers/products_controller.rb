@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      debugger
+      # debugger
         @product = Product.new(product_params)
         @product.user_id = current_user.id
         
@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
     end
     
     def edit
-        @product = Product.find(params[:id])   
+      # debugger
+        @products = Product.find(params[:id])   
     end
 
     def update
