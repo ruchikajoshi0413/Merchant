@@ -1,20 +1,22 @@
 <div class="container">
     <h3 class="h3">Merchant Products </h3>
     <div class="row">
-        <% Product.all.each do |pro|%> 
+        <% @products.each do |pro|%> 
             <div class="col-md-3 col-sm-6">
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#">
-
-                            <img class="pic-1" src="<https://www.w3schools.com/bootstrap4/img_avatar4.png>">
-                            <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"> 
+                            <%#= image_tag "sandal1.jpg" %>
+                            <img class="pic-1" src="<%= pro.productimage.first.image if pro.productimage.any? %>">
+                            <%# <img class="pic-2" src="<%= pro.productimage.second.image if pro.productimage.any? %>" > %>
+                            <%# <img class="pic-1" src="sandal1.jpg">
+                            <img class="pic-2" src="Sandal2.jpg">  %>
                         </a>
-                        <%# <ul class="social">
+                        <ul class="social">
                             <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
                             <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                             <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul> %>
+                        </ul>
                         <span class="product-new-label">Sale</span>
                         <span class="product-discount-label">20%</span>
                     </div>
@@ -27,11 +29,13 @@
                     </ul>
                     <div class="product-content">
                        
-                        <h3 class="title"><a href="#"> <%= pro.name %></a></h3>
+                        <h3 class="title"><a href="/products/<%= pro.id %>"> <%= pro.name %></a></h3>
                         <div class="price"><%= pro.price %>
                             <span><%= pro.price %></span>
                         </div>
-                        <a class="add-to-cart" href="">+ Add To Cart</a>
+                        <%#= link_to "cart", pcarts_product_path(product.id) %>
+                        <a class="add-to-cart" href="<%= pcarts_product_path(pro.id) %>">+ Add To Cart</a>
+                        <%# <a class="add-to-cart" href="/?Myname= Ruchika">+ Add To Cart</a> %>
                     </div>
                 </div>
             </div>

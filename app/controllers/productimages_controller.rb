@@ -19,10 +19,11 @@ class ProductimagesController < ApplicationController
     @productimage.product_id = params[:product_id]
 
     if @productimage.save
-        redirect_to productimages_path, notice: 'Product image created.'
+        redirect_to product_productimages_path, notice: 'Product image created.'
       else
         render :new, status: :unprocessable_entity
     end
+    
   end
 
   def edit
@@ -41,7 +42,7 @@ class ProductimagesController < ApplicationController
   
   def destroy
     @productimage = Productimage.find(params[:id])
-    # @productimage.product_id = params[:product_id]
+    @productimage.product_id = params[:product_id]
     @productimage.destroy
 
     redirect_to root_path, status: :see_other

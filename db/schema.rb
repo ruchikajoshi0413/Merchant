@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_071759) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_053302) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -53,6 +53,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_071759) do
     t.index ["user_id"], name: "index_merchantids_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.integer "pcart_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pcart_id"], name: "index_orders_on_pcart_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "pcarts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_pcarts_on_product_id"
+    t.index ["user_id"], name: "index_pcarts_on_user_id"
+  end
+
   create_table "productimages", force: :cascade do |t|
     t.string "image"
     t.integer "product_id", null: false
@@ -87,8 +109,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_071759) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_wishlists_on_product_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "merchantids", "users"
+  add_foreign_key "orders", "pcarts"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "pcarts", "products"
+  add_foreign_key "pcarts", "users"
   add_foreign_key "productimages", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "wishlists", "products"
+  add_foreign_key "wishlists", "users"
 end

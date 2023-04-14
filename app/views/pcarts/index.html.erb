@@ -1,0 +1,27 @@
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<%= render partial: 'review' %>
+
+<%#= @pcarts.each_slice(10).each do |cart| %>
+  <%#= render 'review', review: cart %>
+<%# end %>
+
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Pcarts</h1>
+
+<div id="pcarts">
+  <% @pcarts.each do |pcart| %>
+    <%= render pcart %>
+    <p>
+      <%= link_to "Show this pcart", pcart %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pcart", new_pcart_path %>

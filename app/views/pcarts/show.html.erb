@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pcart %>
+<%#= render 'products/form' %>
+
+<div>
+  <%= link_to "Edit this pcart", edit_pcart_path(@pcart) %> |
+  <%= link_to "Back to pcarts", pcarts_path %>
+
+  <%= button_to "Destroy this pcart", @pcart, method: :delete %>
+</div>
